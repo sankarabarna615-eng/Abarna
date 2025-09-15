@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.Abarna Portfolio</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+    }
+    header {
+        background: #333;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        background: #444;
+        flex-wrap: wrap;
+    }
+    nav button {
+        background: #444;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    nav button:hover, nav button.active {
+        background: #222;
+        font-weight: bold;
+    }
+    #content {
+        max-width: 900px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        transition: opacity 0.3s ease-in-out;
+    }
+    h2 {
+        color: #333;
+        margin-top: 20px;
+    }
+    .info {
+        margin-bottom: 12px;
+        padding: 10px;
+        background: #f9f9f9;
+        border-left: 4px solid #333;
+    }
+    .info:hover {
+        background: #eee;
+        transition: 0.3s;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>S.Abarna Portfolio</h1>
+</header>
+
+<nav>
+    <button onclick="showSection(event, 'home')">Home</button>
+    <button onclick="showSection(event, 'about')">About</button>
+    <button onclick="showSection(event, 'edu-activities')">Education & Activities</button>
+    <button onclick="showSection(event, 'projects')">Projects</button>
+    <button onclick="showSection(event, 'biodata')">Biodata</button>
+    <button onclick="showSection(event, 'contact')">Contact</button>
+</nav>
+
+<div id="content"></div>
+
+<script>
+    function showSection(event, section) {
+        let content = document.getElementById('content');
+        let buttons = document.querySelectorAll("nav button");
+
+        buttons.forEach(btn => btn.classList.remove("active"));
+        if(event) event.target.classList.add("active");
+
+        content.style.opacity = 0;
+
+        setTimeout(() => {
+            if (section === 'home') {
+                content.innerHTML = `
+                    <h2>Welcome!</h2>
+                    <p>Hello! My name is S.Abarna. I am currently studying in the 2nd year of my B.Sc Information Technology degree. 
+                    I am passionate about web development and love creating clean, simple, and responsive websites.</p>
+                `;
+            } else if (section === 'about') {
+                content.innerHTML = `
+                    <h2>About Me</h2>
+                    <p>I am a web developer with skills in HTML, CSS, and JavaScript. My goal is to build interactive and user-friendly websites. 
+                    Apart from academics, I actively participate in coding activities and teamwork projects.</p>
+                `;
+            } else if (section === 'edu-activities') {
+                content.innerHTML = `
+                    <h2>Education</h2>
+                    <div class="info"><strong>B.Sc Information Technology (2nd Year)</strong><br>
+                    Bharathiar University (2022–2027)<br>
+                    CGPA: 8.7/10</div>
+
+                    <div class="info"><strong>Higher Secondary (Class 12)</strong><br>
+                    Government Girls Higher Secondary School, Perundurai (2021–2022)<br>
+                    Percentage: 90%</div>
+
+                    <div class="info"><strong>Secondary (Class 10)</strong><br>
+                    Government Girls Higher Secondary School (2020–2021)<br>
+                    Percentage: 92%</div>
+
+                    <h2>Extracurricular Activities</h2>
+                    <p>Besides academics, I take part in various extracurricular activities. 
+                    I am an active member of the Coding Club where I help in organizing workshops and hackathons. 
+                    I also enjoy playing football as part of my university team. 
+                    In addition, I participate in community service programs, and I have also taken part in public speaking events where I won 2nd prize in a debate competition.</p>
+                `;
+            } else if (section === 'projects') {
+                content.innerHTML = `
+                    <h2>My Projects</h2>
+                    <p>During my learning journey, I have developed several small projects that helped me improve my programming and problem-solving skills. 
+                    Some of my notable projects include:</p>
+                    <ul>
+                        <li><strong>Portfolio Website</strong> – A responsive personal website showcasing my skills and details.</li>
+                        <li><strong>To-Do App</strong> – A simple task management app to add, edit, and complete daily tasks.</li>
+                        <li><strong>Calculator</strong> – A functional calculator created using JavaScript.</li>
+                    </ul>
+                `;
+            } else if (section === 'biodata') {
+                content.innerHTML = `
+                    <h2>My Biodata</h2>
+                    <p>Here are my personal details presented in a structured format:</p>
+                    <div class="info"><strong>Name:</strong> S.Abarna</div>
+                    <div class="info"><strong>Father's Name:</strong> Sankar</div>
+                    <div class="info"><strong>Mother's Name:</strong> Dhanalakshmi</div>
+                    <div class="info"><strong>Age:</strong> 18 years old</div>
+                    <div class="info"><strong>Blood Group:</strong> A+</div>
+                    <div class="info"><strong>Phone Number:</strong> 9566375076</div>
+                    <div class="info"><strong>Email ID:</strong> sankarabarna615@gmail.com</div>
+                    <div class="info"><strong>Address:</strong> 54,J.K.J colony,manikapuram road,palladam.</div>
+                    <div class="info"><strong>Religion:</strong> Hindu</div>
+                    <div class="info"><strong>Mother Tongue:</strong> Tamil</div>
+                `;
+            } else if (section === 'contact') {
+                content.innerHTML = `
+                    <h2>Contact Me</h2>
+                    <p>You can reach me through the following:</p>
+                    <p><strong>Email:</strong> sankarabarna615@gmail.com</p>
+                    <p><strong>Phone:</strong> 9566375076</p>
+                `;
+            }
+            content.style.opacity = 1;
+        }, 300);
+    }
+
+    // Load Home section by default
+    showSection(null, 'home');
+    document.querySelector("nav button").classList.add("active");
+</script>
+
+</body>
+</html>
